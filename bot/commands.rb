@@ -1,17 +1,32 @@
 module Flombot
   module Commands
     class Taco < SlackRubyBot::Commands::Base
-      command 'who sent this' do |client, data, _match|
+      command 'who sent this' do |client, data, match|
         sender_id = data["user"]
         sender_info = client.users.find{|id, information_array| id == sender_id}[1].profile
         client.say(text:"hello, #{sender_info.display_name}!", channel:data.channel)
       end
 
-      match /^Taco to (?<receiver>\w*)$/ do |client, data, _match|
-        user = User.find_or_create_by(name: _match[:receiver])
-        user.count += 1
-        user.save
-        client.say(channel:data.channel, text: "#{user.name} has #{user.count} shoutouts!")
+      scan /(:taco:)/ do |client, data, match|
+        recievers = data.text.scan(/\@\w+/)
+        users = recievers.map do |id|
+          user = User.find_by(slack_id: id[1..-1])
+          if user
+            user.count +=1
+            user.save
+          else
+            information = client.users.find{|s_id, information| id[1..-1] == s_id}[1].profile
+            user = User.create(
+              slack_id: id[1..-1],
+              name: information.display_name,
+              count: 1
+            )
+          end
+          user
+        end
+        user_names = users.map { |user| user.name  }
+        user_shoutouts = users.map { |user| user.count  }
+        client.say(channel:data.channel, text: "#{user_names.join(', ')} has recieved your shoutouts! #{user_shoutouts.join(', ')}")
       end
     end
   end

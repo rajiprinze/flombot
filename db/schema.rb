@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2018_12_13_041204) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.integer "slack_id"
+    t.string "slack_id"
     t.integer "count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
