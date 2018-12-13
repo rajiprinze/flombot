@@ -19,7 +19,6 @@ module Flombot
             user = User.create(
               slack_id: id[1..-1],
               name: information.display_name,
-              count: 1
             )
           end
           user
