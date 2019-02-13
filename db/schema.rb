@@ -24,8 +24,9 @@ ActiveRecord::Schema.define(version: 2019_02_13_003741) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "name"
     t.string "slack_id"
-    t.integer "taco_count", default: 0
+    t.integer "count", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
