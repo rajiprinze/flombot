@@ -2,8 +2,8 @@
 
 require_relative 'config/environment'
 require ::File.expand_path('../config/environment', __FILE__)
-require ::File.expand_path('../bot/flombot', __FILE__)
-# require ::File.expand_path('../bot/commands', __FILE__)
+require ::File.expand_path('../app/models/flombot', __FILE__)
+
 
 Thread.abort_on_exception = true
 
