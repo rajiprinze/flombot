@@ -10,15 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_13_041204) do
+ActiveRecord::Schema.define(version: 2019_02_13_003741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "shout_outs", force: :cascade do |t|
+    t.text "message"
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string "name"
     t.string "slack_id"
-    t.integer "count", default: 1
+    t.integer "taco_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

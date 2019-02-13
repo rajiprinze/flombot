@@ -1,6 +1,11 @@
 Potential Goals:
 
 * Store the original text (full message)
+  * User responsable for thier own count
+    - Taco limit column? 
+    - no SELF-TACO
+  * Join between users for shoutouts 
+    - save original message (message_text) ?
   * Recipient, sender
   * Original thread id?
 
