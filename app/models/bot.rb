@@ -17,11 +17,11 @@ module Flombot
       receivers.each do |receiver_id|
         receiver = User.find_or_create_by(slack_id: receiver_id)
 
-#change message to exclude slack_ids           
+        #change message to exclude slack_ids           
         ShoutOut.create(receiver: receiver, sender: sender, message: data.text)
-        client.say(channel:data.channel, text: "#{receiver.slack_name} has received your shoutout!") 
-      end 
+        client.say(channel:data.channel, text: "#{receiver.slack_name} has received your shoutout!")
+      end
     end
-    
+
   end
 end
