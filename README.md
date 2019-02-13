@@ -43,7 +43,7 @@ Potential Goals:
    - gem 'celluloid-io'
 
   ### .env (still super secret)
-  SLACK_API_TOKEN="xoxb-2727337933-502814372213-ArOffSwZAfmN7Px0ca9BZydb"
+  SLACK_API_TOKEN="xoxb-2727337933-550816045830-VFKSAsPsi6e0w5ap9IA5VPPx"
 
   ### flombot/bot folder
   The /bot folder now contains two files, commands.rb and flombot.rb
